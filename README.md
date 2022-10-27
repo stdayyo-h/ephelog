@@ -2,7 +2,7 @@
 
 
 # Ephelog - Make a Ton 5.0
-##Temporary login provider
+**Temporary login provider**<br><br>
 Usernames and passwords are ubiquitous today on possibly any website. In this online era, passwords are considered a mechanism of security. But often, one might come across a situation where he/she needs to share their login credentials to a friend, colleague or acquaintance. Most common practice is to change this password later. Not only that, it is possible that most people tend to keep similar passwords in different handles, putting them all at risk. 
 
 Ephelog or Ephemeral login is a browser extension that will provide a temporary login to an intended user for a restricted time frame. This way, there will no longer be the need to share the login credentials to anyone nor will there be a need to change it later. On using Ephelog the user is provided with a unique token that can be shared with the intended user. When he makes a call using a temporary login token, the call includes a session token, which is returned along with those temporary credentials.This is used to validate the temporary login.
