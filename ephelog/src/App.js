@@ -1,10 +1,22 @@
 /*global chrome*/
 import { useState, React } from "react";
+import axios from "axios";
+import logo from "./logo512.png";
 
 export default function App() {
   let [currentCookie, setCurrentCookie] = useState("");
+  let [displayToken, setDisplayToken] = useState("");
+
   function setCookies(domain, name, value, callback) {
     chrome.cookies.set({ url: domain, name: name, value: value });
+  }
+  function getCookies(domain, name, callback) {
+    chrome.cookies.get({ url: domain, name: name }, (cookie) => {
+      console.error(cookie.value);
+      if (callback) {
+        callback(cookie.value);
+      }
+    });
   }
 
   return (
@@ -21,8 +33,11 @@ export default function App() {
           </button>
       </div> */}
       </div>
+      <div>
+        <img src={logo}></img>
+      </div>
       <form id="user" className="bg-white px-8 pt-6 pb-8 mb-4 ">
-        <h3 className="text-3xl lg:text-4xl font-semibold text-gray-800 text-center">
+        {/* <h3 className="text-3xl lg:text-4xl font-semibold text-gray-800 text-center">
           User
         </h3>
         <div className="mb-4">
@@ -66,7 +81,7 @@ export default function App() {
             type="password"
             placeholder="**************"
           />
-        </div>
+        </div> */}
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -83,11 +98,30 @@ export default function App() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
+            onClick={() => {
+              getCookies(
+                "https://tkmce.etlab.in",
+                "TKMSESSIONID",
+                async (cookie) => {
+                  let response = await axios({
+                    method: "post",
+                    url: "http://172.104.206.120/templogin/login/",
+                    data: {
+                      site: "https://tkmce.etlab.in",
+                      sessionCookie: cookie,
+                      sessionCookieName: "TKMSESSIONID",
+                    },
+                  });
+                  setDisplayToken(response.data["sessionId"]);
+                }
+              );
+            }}
           >
             Generate
           </button>
+          <div>{displayToken}</div>
           {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a> */}
@@ -105,7 +139,7 @@ export default function App() {
             className="block text-gray-700 text-sm font-bold mb-2"
             for="username"
           >
-            Username
+            EPHE Password
           </label>
           <input
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -119,15 +153,29 @@ export default function App() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={() => {
+            onClick={async () => {
+              let response = await axios({
+                method: "get",
+                url: "http://172.104.206.120/templogin/login/",
+                params: { sessionId: currentCookie },
+              });
               setCookies(
                 "https://tkmce.etlab.in",
                 "TKMSESSIONID",
-                currentCookie,
+                response.data["sessionCookie"],
                 () => {
                   console.log("Cookie set");
+                  chrome.tabs.query(
+                    { active: true, currentWindow: true },
+                    function (arrayOfTabs) {
+                      var code = "window.location.reload();";
+                      chrome.tabs.executeScript(arrayOfTabs[0].id, {
+                        code: code,
+                      });
+                    }
+                  );
                 }
               );
             }}
