@@ -32,10 +32,17 @@ Embed video of project demo
 * Backend - Django
 
 ## How to configure
-Instructions for setting up project
+`nvm use 16.15.0` `npm install`
 
 ## How to Run
-Instructions for running
+First of all, clone this repository: `git clone https://github.com/stdayyo-h/ephelog.git`.<br>
+Then follow the instructions for your given platform. For convenience, you can run `npm run build` to build and package for the browser extensions.
+
+### Chrome (or Brave)
+
+1. Go to your Chrome browser
+2. Enable [Chrome Extensions Developer Mode](https://developer.chrome.com/extensions/faq#faq-dev-01) in Chrome.
+3. In Settings, click on Extensions and then on "Load unpacked extension" and select the `build/` subfolder under ephelog, of this repository.
 
 ## Other Links
 https://www.figma.com/file/OFDYVfCNupW3Y62JTeH5Cm/Ephelog?node-id=0%3A1
