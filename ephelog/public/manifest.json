@@ -1,6 +1,6 @@
 {
-  "name": "EPHILOG",
-  "description": "TEMPORARY LOGIN PROVIDER",
+  "name": "ephelog",
+  "description": "Temporary Login Provider",
   "version": "1.0",
   "manifest_version": 2,
   "browser_action": {

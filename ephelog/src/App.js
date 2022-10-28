@@ -20,7 +20,7 @@ export default function App() {
   }
 
   return (
-    <div className="w-full max-w-xs ">
+    <div className="">
       <div className="flex flex-col items-center">
         {/* <div className="inline-flex mt-2 xs:mt-0">
           <button className="py-2 px-4 text-sm font-medium text-white bg-blue-500 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -37,6 +37,9 @@ export default function App() {
         <img src={logo}></img>
       </div>
       <form id="user" className="bg-white px-8 pt-6 pb-8 mb-4 ">
+      <h3 className="text-2xl font-semibold text-gray-800 text-center">
+           User
+        </h3>
         {/* <h3 className="text-3xl lg:text-4xl font-semibold text-gray-800 text-center">
           User
         </h3>
@@ -96,9 +99,10 @@ export default function App() {
             placeholder="Username"
           />
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between">
+          <div>
           <button
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={() => {
               getCookies(
@@ -121,7 +125,9 @@ export default function App() {
           >
             Generate
           </button>
-          <div>{displayToken}</div>
+          </div>
+          <div className="text-center">{displayToken}</div>
+          Share It!
           {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a> */}
@@ -131,29 +137,24 @@ export default function App() {
     &copy;2022 Ephelog. All rights reserved.
   </p> */}
       <form id="Iuser" className="bg-white px-8 pt-6 pb-8 mb-4 ">
-        <h3 className="text-3xl lg:text-4xl font-semibold text-gray-800 text-center">
+        <h3 className="text-2xl font-semibold text-gray-800 text-center">
           Intended User
         </h3>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            for="username"
-          >
-            EPHE Password
-          </label>
           <input
             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
-            placeholder="Site Link"
+            placeholder="Enter Temporary Password"
             onChange={(e) => {
               setCurrentCookie(e.target.value);
             }}
           />
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center">
+          <div>
           <button
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-center"
             type="button"
             onClick={async () => {
               let response = await axios({
@@ -182,6 +183,8 @@ export default function App() {
           >
             Login
           </button>
+          </div>
+          
           {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a> */}
