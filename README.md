@@ -15,7 +15,7 @@ These temporary credentials expire after a specified interval. After they expire
 [4.Fathima Nooha](https://github.com/nooha01)   
 
 ## Link to Project
-[Embed the live link of project](live_link)
+[Devfolio Link](https://devfolio.co/projects/ephelog-a1ec)
 
 ## How it Works ?
 * For this service, both the users, the one who needs to share his login credentials and the one who requires it, need to login to the platform. They will be provided with a unique username.
