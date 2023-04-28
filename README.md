@@ -1,5 +1,5 @@
 
-# Ephelog - Make a Ton 5.0
+# Ephelog 
 **Temporary login provider**<br><br>
 Usernames and passwords are ubiquitous today on possibly any website. In this online era, passwords are considered a mechanism of security. But often, one might come across a situation where he/she needs to share their login credentials to a friend, colleague or acquaintance. Most common practice is to change this password later. Not only that, it is possible that most people tend to keep similar passwords in different handles, putting them all at risk. 
 
